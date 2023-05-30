@@ -3,8 +3,8 @@
 
 $filePath = $args[0]
 $reg = "([A-Za-z0-9-]*).rs$"
-rustc $args[0] --out-dir ./bin &
-if ($args[0] -match $reg) {
+rustc $args[0] --out-dir ./bin
+if ($? -and $args[0] -match $reg) {
     while (!(Test-Path -Path "./bin/$($matches[1]).exe")) {
         Start-Sleep -Milliseconds 100
     }
